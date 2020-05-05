@@ -8,10 +8,9 @@ public class Patologia {
 	@Id
 	private String nome;
 
+
 	
-public Patologia() {
-	
-}
+
 
 
 public String getNome() {

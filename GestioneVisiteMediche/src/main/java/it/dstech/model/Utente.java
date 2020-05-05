@@ -25,9 +25,7 @@ public class Utente {
 	@OneToMany
 	private List<Appuntamento> appuntamenti;
 
-	public Utente() {
 
-	}
 
 	public String getCodiceFiscale() {
 		return codiceFiscale;

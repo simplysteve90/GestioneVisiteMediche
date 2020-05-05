@@ -11,9 +11,7 @@ public class Appuntamento {
 	private String ora;
 	private Patologia patologia;
 	
-	public Appuntamento() {
 		
-	}
 
 	public long getId() {
 		return id;

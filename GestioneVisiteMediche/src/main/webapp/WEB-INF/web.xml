@@ -9,11 +9,11 @@
   </welcome-file-list>  
   
 	<filter-mapping>
-		<filter-name>filtroUtente</filter-name>
+		<filter-name>filtroMedico</filter-name>
 		<url-pattern />
 	</filter-mapping>
 	<filter-mapping>
-		<filter-name>filtroAdmin</filter-name>
+		<filter-name>filtroPaziente</filter-name>
 		<url-pattern />
 	</filter-mapping>
 
