@@ -34,9 +34,9 @@ public class GestioneDatabase {
 	public boolean controlloUtente(Utente utente) {
 		Utente u = em.find(Utente.class, utente.getCodiceFiscale());
 		if (u == null) {
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	public Patologia aggiungiPatologia(Patologia patologia) {

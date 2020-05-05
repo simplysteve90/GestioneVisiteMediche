@@ -9,9 +9,8 @@ public class Patologia {
 	private String nome;
 
 
-	
-
-
+public Patologia() {
+	}
 
 public String getNome() {
 	return nome;

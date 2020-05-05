@@ -20,12 +20,14 @@ public class Utente {
 	@Column(columnDefinition = "LONGBLOB NOT NULL")
 	private String image;
 	private String ruolo;
-	@Column(columnDefinition = "BOOLEAN NOT NULL")
+	@Column(columnDefinition = "boolean default false")
 	private boolean active;
 	@OneToMany
 	private List<Appuntamento> appuntamenti;
-
-
+	
+	
+	public Utente() {
+	}
 
 	public String getCodiceFiscale() {
 		return codiceFiscale;

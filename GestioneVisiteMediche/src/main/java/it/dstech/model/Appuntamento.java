@@ -2,6 +2,7 @@ package it.dstech.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Appuntamento {
@@ -9,9 +10,22 @@ public class Appuntamento {
 	private long id;
 	private String data;
 	private String ora;
+	@ManyToOne
 	private Patologia patologia;
-	
+	@ManyToOne
+	private Utente utente;
 		
+
+	public Appuntamento() {
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
 
 	public long getId() {
 		return id;
