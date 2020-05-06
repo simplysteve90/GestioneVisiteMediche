@@ -8,6 +8,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import it.dstech.model.Appuntamento;
+import it.dstech.model.Disponibilita;
 import it.dstech.model.Patologia;
 import it.dstech.model.Utente;
 
@@ -79,14 +80,35 @@ public class GestioneDatabase {
 
 	public boolean controlloAppuntamento(Appuntamento appuntamento) {
 		Query query = em.createQuery(
-				"SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.data = ?1 and appuntamento.ora = ?2");
-		query.setParameter(1, appuntamento.getData());
-		query.setParameter(2, appuntamento.getOra());
+				"SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.disponibilita.data = ?1 "
+				+ "and appuntamento.disponibilita.oraInizio = ?2");
+		query.setParameter(1, appuntamento.getDisponibilita().getData());
+		query.setParameter(2, appuntamento.getDisponibilita().getOraInizio());
 		try {
 			return false;
 		} catch (NoResultException e) {
 			return true;
 		}
 
+	}
+	
+	public Disponibilita aggiungiDisponibilita(Disponibilita disponibilita) {
+		em.getTransaction().begin();
+		em.persist(disponibilita);
+		em.getTransaction().commit();
+		return disponibilita;
+	}
+	
+	public boolean controlloDisponibilita(Disponibilita disponibilita) {
+		Query query = em.createQuery(
+				"SELECT disponibilita FROM Disponibilita disponibilita WHERE disponibilita.data = ?1 "
+				+ "and disponibilita.oraInizio = ?2");
+		query.setParameter(1, disponibilita.getData());
+		query.setParameter(2, disponibilita.getOraInizio());
+		try {
+			return false;
+		} catch (NoResultException e) {
+			return true;
+		}
 	}
 }

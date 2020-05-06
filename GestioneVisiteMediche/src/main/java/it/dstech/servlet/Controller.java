@@ -29,10 +29,38 @@ public class Controller extends HttpServlet{
 		int azione = Integer.parseInt(req.getParameter("azione"));
 		switch (azione) {
 		case 1:
-			
+			req.setAttribute("messaggio", "Devi prima accedere");
+	        req.getRequestDispatcher("agenda.jsp").forward(req, resp);
 			break;
-
-		default:
+		case 2:
+			req.setAttribute("messaggio", "Devi prima accedere");
+	        req.getRequestDispatcher("aggiungiPatologia.jsp").forward(req, resp);
+			break;
+		case 3:
+			req.setAttribute("messaggio", "Devi prima accedere");
+	        req.getRequestDispatcher("rimuoviPatologia.jsp").forward(req, resp);
+			break;
+		case 4:
+			req.setAttribute("messaggio", "Devi prima accedere");
+	        req.getRequestDispatcher("aggiungiDisp.jsp").forward(req, resp);
+			break;
+		case 5:
+			req.setAttribute("messaggio", "Devi prima accedere");
+	        req.getRequestDispatcher("rimuoviDisp.jsp").forward(req, resp);
+			break;
+		case 6:
+			//case per aggiungere appuntamento
+			req.setAttribute("messaggio", "Devi prima accedere");
+	        req.getRequestDispatcher("agenda.jsp").forward(req, resp);
+			break;
+		case 7:
+			//case per rimuovere appuntamento
+			req.setAttribute("messaggio", "Devi prima accedere");
+	        req.getRequestDispatcher("agenda.jsp").forward(req, resp);
+			break;
+		case 8:
+			req.setAttribute("messaggio", "Devi prima accedere");
+	        req.getRequestDispatcher("storicoApp.jsp").forward(req, resp);
 			break;
 		}
 	}
