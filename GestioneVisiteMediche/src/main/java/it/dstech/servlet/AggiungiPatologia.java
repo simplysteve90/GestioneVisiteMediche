@@ -31,8 +31,9 @@ public class AggiungiPatologia extends HttpServlet{
 			gestioneDB.aggiungiPatologia(patologia);
 			req.setAttribute("messaggio", "Patologia aggiunta");
 	        req.getRequestDispatcher("menuMedico.jsp").forward(req, resp);
+	        
 		} else {
-			req.setAttribute("messaggio", "Patologia gi√† presente");
+			req.setAttribute("messaggio", "Patologia gi‡ presente");
 	        req.getRequestDispatcher("menuMedico.jsp").forward(req, resp);
 		}
 	}

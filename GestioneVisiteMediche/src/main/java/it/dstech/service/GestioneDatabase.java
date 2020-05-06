@@ -1,5 +1,7 @@
 package it.dstech.service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -8,6 +10,7 @@ import javax.persistence.Query;
 import it.dstech.model.Appuntamento;
 import it.dstech.model.Patologia;
 import it.dstech.model.Utente;
+
 
 public class GestioneDatabase {
 	private EntityManager em;
@@ -57,6 +60,11 @@ public class GestioneDatabase {
 			return true;
 		}
 		return false;
+	}
+	
+	public List<Patologia> stampaPatologia(){
+		List<Patologia> lista = em.createQuery("SELECT p FROM Patologia p ORDER BY p.nome", Patologia.class).getResultList();
+		return lista;
 	}
 
 	public Appuntamento aggiungiAppuntamento(Appuntamento appuntamento, Utente utente) {
