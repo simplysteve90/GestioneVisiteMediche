@@ -19,6 +19,7 @@ public class Utente {
 	@Lob
 	@Column(columnDefinition = "LONGBLOB NOT NULL")
 	private String image;
+	@Column(columnDefinition = "VARCHAR(255) default 'paziente'")
 	private String ruolo;
 	@Column(columnDefinition = "boolean default false")
 	private boolean active;
