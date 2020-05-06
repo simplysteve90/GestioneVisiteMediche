@@ -19,24 +19,23 @@ import it.dstech.service.GestioneDatabase;
 import it.dstech.utility.Crypto;
 import it.dstech.utility.EmailUtility;
 
-
 @MultipartConfig
 @WebServlet(name = "registrazione", urlPatterns = { "/registrazione" })
 
-public class Registrazione extends HttpServlet{
+public class Registrazione extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("messaggio", "Utente gi√† esistente");
-        req.getRequestDispatcher("login.jsp").forward(req, resp);
+		req.setAttribute("messaggio", "Utente gi‡ esistente");
+		req.getRequestDispatcher("login.jsp").forward(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-        try {
+
+		try {
 			GestioneDatabase gestioneDB = new GestioneDatabase(
-			        (EntityManagerFactory) getServletContext().getAttribute("emf"));
+					(EntityManagerFactory) getServletContext().getAttribute("emf"));
 			Utente utente = new Utente();
 			Part image = req.getPart("image");
 			InputStream f = image.getInputStream();
@@ -49,24 +48,24 @@ public class Registrazione extends HttpServlet{
 			utente.setNome(req.getParameter("nome"));
 			utente.setCognome(req.getParameter("cognome"));
 			utente.setEmail(req.getParameter("email"));
+			utente.setRuolo("paziente");
 			utente.setImage(imageStr);
-			utente.setRuolo(req.getParameter("ruolo"));
-			if(gestioneDB.controlloUtente(utente)) {
-				req.setAttribute("messaggio", "Utente gi√† esistente");
-			    req.getRequestDispatcher("login.jsp").forward(req, resp);
+			if (gestioneDB.controlloUtente(utente)) {
+				req.setAttribute("messaggio", "Utente gi‡ esistente");
+				req.getRequestDispatcher("login.jsp").forward(req, resp);
 			} else {
 				gestioneDB.aggiungiUtente(utente);
-				EmailUtility.sendEmail(utente.getEmail(), "Conferma Mail",
-			            generaLinkValidazioneUtente(utente));
+				EmailUtility.sendEmail(utente.getEmail(), "Conferma Mail", generaLinkValidazioneUtente(utente));
 				req.setAttribute("messaggio", "Controlla l'email per la validazione");
-			    req.getRequestDispatcher("login.jsp").forward(req, resp);
+				req.getRequestDispatcher("login.jsp").forward(req, resp);
 			}
 		} catch (IOException | ServletException | MessagingException e) {
 			e.printStackTrace();
 		}
 	}
+
 	private String generaLinkValidazioneUtente(Utente utente) {
-        String validationPath = "http://localhost:8080/battleground-tracker/validazione?utente=";
-        return "Per attivare la mail clicca su questo link: " + validationPath + utente.getCodiceFiscale();
-    }
+		String validationPath = "http://localhost:8080/GestioneVisiteMediche/validazione?codFiscale=";
+		return "Per attivare la mail clicca su questo link: " + validationPath + utente.getCodiceFiscale();
+	}
 }

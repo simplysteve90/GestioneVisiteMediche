@@ -30,7 +30,7 @@ public class FiltroMedico implements Filter {
 
 		HttpSession sessione = ((HttpServletRequest) request).getSession();
 		Utente utente = (Utente) sessione.getAttribute("Utente");
-		System.out.println("sono nel filtro admin");
+		System.out.println("sono nel filtro medico");
 
 		if ("medico".equals(utente.getRuolo())) {
 			chain.doFilter(request, response);

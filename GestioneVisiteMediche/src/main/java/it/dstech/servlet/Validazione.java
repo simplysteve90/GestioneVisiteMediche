@@ -13,16 +13,16 @@ import it.dstech.model.Utente;
 import it.dstech.service.GestioneDatabase;
 
 @WebServlet(urlPatterns = { "/validazione" })
-public class Validazione extends HttpServlet{
+public class Validazione extends HttpServlet {
 
-	  @Override
-	    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	        GestioneDatabase gestioneDB = new GestioneDatabase(
-	                (EntityManagerFactory) getServletContext().getAttribute("emf"));
-	        Utente utente = gestioneDB.validaUtente(req.getParameter("codFiscale"));
-	        req.setAttribute("messaggio", "L'utente " + utente.getCodiceFiscale() + " Ã¨ stato validato");
-	        req.getRequestDispatcher("login.jsp").forward(req, resp);
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		GestioneDatabase gestioneDB = new GestioneDatabase(
+				(EntityManagerFactory) getServletContext().getAttribute("emf"));
+		Utente utente = gestioneDB.validaUtente(req.getParameter("codFiscale"));
+		req.setAttribute("messaggio", "L'utente " + utente.getCodiceFiscale() + " è stato validato");
+		req.getRequestDispatcher("login.jsp").forward(req, resp);
 
-	    }
+	}
 
 }

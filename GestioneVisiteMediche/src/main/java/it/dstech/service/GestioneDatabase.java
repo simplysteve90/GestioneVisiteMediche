@@ -25,8 +25,9 @@ public class GestioneDatabase {
 
 	public Utente validaUtente(String codiceFiscale) {
 		Utente utente = em.find(Utente.class, codiceFiscale);
-		em.getTransaction().begin();
 		utente.setActive(true);
+		em.getTransaction().begin();
+		em.persist(utente);
 		em.getTransaction().commit();
 		return utente;
 	}
@@ -37,6 +38,10 @@ public class GestioneDatabase {
 			return false;
 		}
 		return true;
+	}
+
+	public Utente trovaUtente(Utente utente) {
+		return em.find(Utente.class, utente.getCodiceFiscale());
 	}
 
 	public Patologia aggiungiPatologia(Patologia patologia) {
