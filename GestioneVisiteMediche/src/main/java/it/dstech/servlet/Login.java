@@ -32,7 +32,8 @@ public class Login extends HttpServlet {
 			Utente utente = new Utente();
 			utente.setCodiceFiscale(req.getParameter("codFiscale"));
 			utente.setPassword(Crypto.encrypt(req.getParameter("password")));
-
+			String action= req.getParameter("action");
+			if(action.equals("1")) {
 			if (!gestioneDB.controlloUtente(utente)) {
 				req.setAttribute("messaggio", "Credenziali invalide");
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
@@ -52,7 +53,9 @@ public class Login extends HttpServlet {
 			} else {
 				req.setAttribute("messaggio", "Utente non attivo, controllare l'email");
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
-
+			}
+			}else {
+				req.getRequestDispatcher("registrazione.jsp").forward(req, resp);
 			}
 		} catch (IOException | ServletException e) {
 			e.printStackTrace();
