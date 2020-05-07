@@ -63,6 +63,14 @@ public class GestioneDatabase {
 		return false;
 	}
 	
+	public Patologia rimuoviPatologia(Patologia patologia) {
+		Patologia p = em.find(Patologia.class, patologia.getNome());
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
+		return p;
+	}
+	
 	public List<Patologia> stampaPatologia(){
 		List<Patologia> lista = em.createQuery("SELECT p FROM Patologia p ORDER BY p.nome", Patologia.class).getResultList();
 		return lista;
@@ -78,19 +86,20 @@ public class GestioneDatabase {
 		return appuntamento;
 	}
 
-	public boolean controlloAppuntamento(Appuntamento appuntamento) {
-		Query query = em.createQuery(
-				"SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.disponibilita.data = ?1 "
-				+ "and appuntamento.disponibilita.oraInizio = ?2");
-		query.setParameter(1, appuntamento.getDisponibilita().getData());
-		query.setParameter(2, appuntamento.getDisponibilita().getOraInizio());
-		try {
-			query.getSingleResult();
-			return false;
-		} catch (NoResultException e) {
-			return true;
+	public boolean controlloAppuntamento(Disponibilita disponibilita) {
+		Disponibilita d = em.find(Disponibilita.class, disponibilita.getIdDisponibilita());
+		if(d.isPrenotato()) {
+			return false;	
 		}
-
+		return true;
+	}
+	
+	public Appuntamento rimuoviAppuntamento(long idAppuntamento) {
+		Appuntamento appuntamento= em.find(Appuntamento.class, idAppuntamento);
+		em.getTransaction().begin();
+		em.remove(appuntamento);
+		em.getTransaction().commit();
+		return appuntamento;
 	}
 	
 	public List<Appuntamento> mostraListaAppuntamenti(){
@@ -103,6 +112,14 @@ public class GestioneDatabase {
 	public Disponibilita aggiungiDisponibilita(Disponibilita disponibilita) {
 		em.getTransaction().begin();
 		em.persist(disponibilita);
+		em.getTransaction().commit();
+		return disponibilita;
+	}
+	
+	public Disponibilita rimuoviDisponibilita(long idDisponibilita) {
+		Disponibilita disponibilita = em.find(Disponibilita.class, idDisponibilita);
+		em.getTransaction().begin();
+		em.remove(disponibilita);
 		em.getTransaction().commit();
 		return disponibilita;
 	}
