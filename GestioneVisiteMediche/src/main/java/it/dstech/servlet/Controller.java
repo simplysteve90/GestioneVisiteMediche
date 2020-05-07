@@ -29,7 +29,7 @@ public class Controller extends HttpServlet{
 		int azione = Integer.parseInt(req.getParameter("azione"));
 		switch (azione) {
 		case 1:
-			req.setAttribute("messaggio", "Devi prima accedere");
+			req.setAttribute("listaDisponibilita", gestioneDB.mostraListaDisponibilita(req.getParameter("data")));
 	        req.getRequestDispatcher("agenda.jsp").forward(req, resp);
 			break;
 		case 2:
@@ -50,13 +50,13 @@ public class Controller extends HttpServlet{
 			break;
 		case 6:
 			//case per aggiungere appuntamento
-			req.setAttribute("messaggio", "Devi prima accedere");
+			req.setAttribute("listaDisponibilita", gestioneDB.mostraListaDisponibilita(req.getParameter("data")));
 	        req.getRequestDispatcher("agenda.jsp").forward(req, resp);
 			break;
 		case 7:
 			//case per rimuovere appuntamento
-			req.setAttribute("messaggio", "Devi prima accedere");
-	        req.getRequestDispatcher("agenda.jsp").forward(req, resp);
+			req.setAttribute("listaAppuntamenti", gestioneDB.mostraListaAppuntamenti());
+	        req.getRequestDispatcher("annullaAppuntamento.jsp").forward(req, resp);
 			break;
 		case 8:
 			req.setAttribute("messaggio", "Devi prima accedere");

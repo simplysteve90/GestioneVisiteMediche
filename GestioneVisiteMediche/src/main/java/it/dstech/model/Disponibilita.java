@@ -1,5 +1,6 @@
 package it.dstech.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,19 @@ public class Disponibilita {
 	private String data;
 	private String oraInizio;
 	private String oraFine;
+	@Column(columnDefinition = "boolean default false")
+	private boolean prenotato;
+
+	public Disponibilita() {
+	}
+
+	public boolean isPrenotato() {
+		return prenotato;
+	}
+
+	public void setPrenotato(boolean prenotato) {
+		this.prenotato = prenotato;
+	}
 
 	public long getIdDisponibilita() {
 		return idDisponibilita;

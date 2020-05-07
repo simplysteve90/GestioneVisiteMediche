@@ -17,7 +17,7 @@
 		if (mess != null) {
 	%>
 	<h4>
-		<%=mess%></p>
+		<%=mess%>
 	</h4>
 	<%
 		}

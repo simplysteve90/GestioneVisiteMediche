@@ -85,11 +85,19 @@ public class GestioneDatabase {
 		query.setParameter(1, appuntamento.getDisponibilita().getData());
 		query.setParameter(2, appuntamento.getDisponibilita().getOraInizio());
 		try {
+			query.getSingleResult();
 			return false;
 		} catch (NoResultException e) {
 			return true;
 		}
 
+	}
+	
+	public List<Appuntamento> mostraListaAppuntamenti(){
+		Query query = em.createQuery("SELECT appuntamento FROM Appuntamento appuntamento"
+				+ " WHERE appuntamento.effettuato = 1?");
+		query.setParameter(1, false);
+		return query.getResultList();
 	}
 	
 	public Disponibilita aggiungiDisponibilita(Disponibilita disponibilita) {
@@ -106,9 +114,16 @@ public class GestioneDatabase {
 		query.setParameter(1, disponibilita.getData());
 		query.setParameter(2, disponibilita.getOraInizio());
 		try {
+			query.getSingleResult();
 			return false;
 		} catch (NoResultException e) {
 			return true;
 		}
+	}
+	public List<Disponibilita> mostraListaDisponibilita(String data){
+		Query query = em.createQuery(
+				"SELECT disponibilita FROM Disponibilita disponibilita WHERE disponibilita.data = ?1 ");
+		query.setParameter(1, data);
+		return query.getResultList();
 	}
 }

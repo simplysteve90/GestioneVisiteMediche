@@ -1,5 +1,6 @@
 package it.dstech.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +18,9 @@ public class Appuntamento {
 	private Patologia patologia;
 	@ManyToOne
 	private Utente utente;
+	@Column(columnDefinition = "boolean default false")
+	private boolean effettuato;
 		
-
 	public Appuntamento() {
 	}
 
