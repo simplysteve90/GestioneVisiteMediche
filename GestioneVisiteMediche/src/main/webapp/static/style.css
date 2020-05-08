@@ -1,26 +1,65 @@
-body{
-	background-image: url("../media/sfondobello.jpg");
-	background-size: cover;
-	height: 100%;
-	width: 100%;
-	min-height: 100%;
+body {
+	background-image: url("../media/sfondo.jpg");
+	background-size: 1920px 1080px;
+	
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
+
 input[type="text"], [type="password"] {
 	border-radius: 4px;
 	text-align: center;
 	border: 1px solid white;
 	height: 35px;
+	width: 110px;
+	border: 1px solid black;
 }
-.pulsante{
+
+.pulsante {
 	width: 120px;
 	border-radius: 4px;
 	text-align: center;
-	border: 1px solid white;
+	border: 1px solid black;
 	height: 35px;
 	margin-left: 5px;
-margin-top: 5px;
-	}
-	form{
-	display: inline-block;}
+	background-color: #5eb1ff;
+}
+
+
+.pulsante:active {
+	transform: translateY(2px);
+}
+
+form {
+	display: inline; 
+}
+.logo{
+	height: 60px;
+	width: 125px;
+}
+nav{
+	border: 2px solid #817f85;
+	box-shadow: black;
+	opacity: 0.85;
+}
+.messaggi{
+	padding-top: 100px;
+	align-self: center;
+}
+.contenitore{
+	padding-top: 400px;
+	width: 100%;
+	
+}
+.dr{
+	border:4px ridge white;;
+	height: 200px;
+	width: 200px;
+	border-radius: 100px;
+	
+}
+.h{
+	border: 3px ridge white;
+	background-color: #5eb1ff;
+	margin-top:  10px;
+}

@@ -14,22 +14,22 @@
 
 <body>
 <header>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-lg bg-light fixed-top">
 		
 
 
 			<div class="col-sm" >
-				<p>Ciao</p>
+				<img alt="" class="logo" src="media/nome.png">
 			</div>
 			<div class="col-sm" >
-				<p>Ciao</p>
+				
 			</div>
-			<div class="col-sm"  >
+			<div class="col-sm" align="right" >
 			<form action="login" method="post">
 				<input type="text" id="codFiscale" name="codFiscale" placeholder="Codice Fiscale" required="required"> 
 				<input type="password" id="password" name="password" placeholder="Password" required="required">
-				<button type="submit" value="1" name="action" class="pulsante">  Accedi  </button>
-				<button type="submit" value="2" name="action" class="pulsante" formnovalidate="formnovalidate">Registrazione</button>
+				<button type="submit" value="1" name="action" class="pulsante"> <b> Accedi </b> </button>
+				<button type="submit" value="2" name="action" class="pulsante" formnovalidate="formnovalidate"> <b>Registrazione</b></button>
 				</form>
 				</div>
 				
@@ -42,7 +42,10 @@
 		
 	</nav>
 	</header>
-	<%
+	
+<div class="messaggi" align="center">
+
+<%
 		session.getAttribute("username");
 	%>
 
@@ -57,7 +60,28 @@
 	<%
 		}
 	%><br>
-
+</div>
+<div class="container contenitore"align="center">
+<h1 class="h">I NOSTRI SPECIALISTI</h1>
+  <div class="row">
+    <div class="col-sm">
+     <img alt="" class="dr" src="media/nowzaradan.jpg">
+     <h3 class="h">Dott. Nowzaradan</h3>
+    </div>
+    <div class="col-sm">
+     <img alt="" class="dr" src="media/sins.jpg">
+      <h3 class="h">Dott. Sins</h3>
+    </div>
+    <div class="col-sm">
+      <img alt="" class="dr" src="media/strange.jpg">
+       <h3 class="h">Dott. Strange</h3>
+    </div>
+    <div class="col-sm">
+      <img alt="" class="dr" src="media/strange.jpg">
+       <h3 class="h">Dott. Strange</h3>
+    </div>
+  </div>
+</div>
 
 
 
