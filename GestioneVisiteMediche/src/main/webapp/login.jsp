@@ -26,8 +26,8 @@
 			</div>
 			<div class="col-sm" align="right" >
 			<form action="login" method="post">
-				<input type="text" id="codFiscale" name="codFiscale" placeholder="Codice Fiscale" required="required"> 
-				<input type="password" id="password" name="password" placeholder="Password" required="required">
+				<input type="text" class="login" id="codFiscale" name="codFiscale" placeholder="Codice Fiscale" required="required"> 
+				<input type="password" class="login" id="password" name="password" placeholder="Password" required="required">
 				<button type="submit" value="1" name="action" class="pulsante"> <b> Accedi </b> </button>
 				<button type="submit" value="2" name="action" class="pulsante" formnovalidate="formnovalidate"> <b>Registrazione</b></button>
 				</form>
@@ -76,10 +76,7 @@
       <img alt="" class="dr" src="media/strange.jpg">
        <h3 class="h">Dott. Strange</h3>
     </div>
-    <div class="col-sm">
-      <img alt="" class="dr" src="media/strange.jpg">
-       <h3 class="h">Dott. Strange</h3>
-    </div>
+   
   </div>
 </div>
 
