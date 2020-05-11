@@ -10,11 +10,14 @@
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 		<a class="navbar-brand" href="#">Sezione Paziente</a>
+		
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
+			
 				<li class="nav-item active"><a class="nav-link"
 					href="<%=request.getContextPath()%>/paziente/menuPaziente.jsp">Home <span
 						class="sr-only">(current)</span></a></li>
+						
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/paziente/controlloAzione?azione=6">Aggiungi Appuntamento
 					<span class="sr-only">(current)</span></a></li>

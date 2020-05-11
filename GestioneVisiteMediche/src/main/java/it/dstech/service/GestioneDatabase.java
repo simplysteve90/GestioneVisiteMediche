@@ -12,7 +12,6 @@ import it.dstech.model.Disponibilita;
 import it.dstech.model.Patologia;
 import it.dstech.model.Utente;
 
-
 public class GestioneDatabase {
 	private EntityManager em;
 
@@ -62,7 +61,7 @@ public class GestioneDatabase {
 		}
 		return false;
 	}
-	
+
 	public Patologia rimuoviPatologia(Patologia patologia) {
 		Patologia p = em.find(Patologia.class, patologia.getNome());
 		em.getTransaction().begin();
@@ -70,9 +69,10 @@ public class GestioneDatabase {
 		em.getTransaction().commit();
 		return p;
 	}
-	
-	public List<Patologia> stampaPatologia(){
-		List<Patologia> lista = em.createQuery("SELECT p FROM Patologia p ORDER BY p.nome", Patologia.class).getResultList();
+
+	public List<Patologia> stampaPatologia() {
+		List<Patologia> lista = em.createQuery("SELECT p FROM Patologia p ORDER BY p.nome", Patologia.class)
+				.getResultList();
 		return lista;
 	}
 
@@ -88,34 +88,41 @@ public class GestioneDatabase {
 
 	public boolean controlloAppuntamento(Disponibilita disponibilita) {
 		Disponibilita d = em.find(Disponibilita.class, disponibilita.getIdDisponibilita());
-		if(d.isPrenotato()) {
-			return false;	
+		if (d.isPrenotato()) {
+			return false;
 		}
 		return true;
 	}
-	
+
 	public Appuntamento rimuoviAppuntamento(long idAppuntamento) {
-		Appuntamento appuntamento= em.find(Appuntamento.class, idAppuntamento);
+		Appuntamento appuntamento = em.find(Appuntamento.class, idAppuntamento);
 		em.getTransaction().begin();
 		em.remove(appuntamento);
 		em.getTransaction().commit();
 		return appuntamento;
 	}
-	
-	public List<Appuntamento> mostraListaAppuntamenti(){
-		Query query = em.createQuery("SELECT appuntamento FROM Appuntamento appuntamento"
-				+ " WHERE appuntamento.effettuato = 1?");
+
+	public List<Appuntamento> mostraListaAppuntamenti() {
+		Query query = em
+				.createQuery("SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.effettuato = 1?");
 		query.setParameter(1, false);
 		return query.getResultList();
 	}
-	
+
+	public List<Appuntamento> mostraStoricoAppuntamenti() {
+		Query query = em
+				.createQuery("SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.effettuato = 1?");
+		query.setParameter(1, true);
+		return query.getResultList();
+	}
+
 	public Disponibilita aggiungiDisponibilita(Disponibilita disponibilita) {
 		em.getTransaction().begin();
 		em.persist(disponibilita);
 		em.getTransaction().commit();
 		return disponibilita;
 	}
-	
+
 	public Disponibilita rimuoviDisponibilita(long idDisponibilita) {
 		Disponibilita disponibilita = em.find(Disponibilita.class, idDisponibilita);
 		em.getTransaction().begin();
@@ -123,11 +130,11 @@ public class GestioneDatabase {
 		em.getTransaction().commit();
 		return disponibilita;
 	}
-	
+
 	public boolean controlloDisponibilita(Disponibilita disponibilita) {
-		Query query = em.createQuery(
-				"SELECT disponibilita FROM Disponibilita disponibilita WHERE disponibilita.data = ?1 "
-				+ "and disponibilita.oraInizio = ?2");
+		Query query = em
+				.createQuery("SELECT disponibilita FROM Disponibilita disponibilita WHERE disponibilita.data = ?1 "
+						+ "and disponibilita.oraInizio = ?2");
 		query.setParameter(1, disponibilita.getData());
 		query.setParameter(2, disponibilita.getOraInizio());
 		try {
@@ -137,9 +144,10 @@ public class GestioneDatabase {
 			return true;
 		}
 	}
-	public List<Disponibilita> mostraListaDisponibilita(String data){
-		Query query = em.createQuery(
-				"SELECT disponibilita FROM Disponibilita disponibilita WHERE disponibilita.data = ?1 ");
+
+	public List<Disponibilita> mostraListaDisponibilita(String data) {
+		Query query = em
+				.createQuery("SELECT disponibilita FROM Disponibilita disponibilita WHERE disponibilita.data = ?1 ");
 		query.setParameter(1, data);
 		return query.getResultList();
 	}

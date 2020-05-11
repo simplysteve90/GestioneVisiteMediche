@@ -9,28 +9,24 @@
 </head>
 <body>
 <%
-		String mess = (String) request.getAttribute("mess");
-		if (mess != null) {
-	%>
-	<h4>
-		<p class="text-md-center text-white"><%=mess%></p>
-	</h4>
+String messaggio = (String) request.getAttribute("messaggio");
 
+	if (messaggio != null ){
+		%>
+	<main role="main" class="inner cover">
+    <h1 class="cover-heading">Messaggio</h1>
+    <p class="lead"><c:out value = "${messaggio}"/></p>
+    
+  </main>
 
 	<%
 		}
 	%>
 	<br>
-<!-- 	<hr> -->
-<!-- 	<ul> -->
-<%-- 		<c:forEach items="${listaPatologia}" var="singolaPatologia"> --%>
-<%-- 			<li> <h5><c:out value="${singolaPatolgia.getNome()}" /></h5></li> --%>
-<%-- 		</c:forEach> --%>
-<!-- 	</ul> -->
-<!-- 	<hr> -->
+
 	<form action="aggiungiPatologia" method="post" >
 
-    <h5><p class="text-xl-center text-warning">Inserisci Patologia</p></h5>
+    <h5>Inserisci Patologia</h5>
     <input type="text" id="nomePatologia" name="nomePatologia" style="width:250px; height:50px;margin:auto" placeholder="Patologia"> <br>
 <br>
   <input type="submit" style="width:150px; height:45px;margin:auto" name= action value="Aggiungi">

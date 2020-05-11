@@ -20,7 +20,7 @@ public class Appuntamento {
 	private Utente utente;
 	@Column(columnDefinition = "boolean default false")
 	private boolean effettuato;
-		
+
 	public Appuntamento() {
 	}
 
@@ -40,7 +40,13 @@ public class Appuntamento {
 		this.idAppuntamento = idAppuntamento;
 	}
 
-	
+	public boolean isEffettuato() {
+		return effettuato;
+	}
+
+	public void setEffettuato(boolean effettuato) {
+		this.effettuato = effettuato;
+	}
 
 	public Patologia getPatologia() {
 		return patologia;
@@ -63,11 +69,5 @@ public class Appuntamento {
 		return "Appuntamento [idAppuntamento=" + idAppuntamento + ", disponibilita=" + disponibilita + ", patologia="
 				+ patologia + ", utente=" + utente + "]";
 	}
-	
-	
-
-	
-	
-	
 
 }

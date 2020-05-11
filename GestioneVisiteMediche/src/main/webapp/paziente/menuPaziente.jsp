@@ -8,6 +8,25 @@
 <title>Menu Paziente</title>
 </head>
 <body>
+<%@include file="tendinaPaziente.jsp"%>
+<br><br>
+<%
+String messaggio = (String) request.getAttribute("messaggio");
 
+	if (messaggio != null ){
+		%>
+	<main role="main" class="inner cover">
+    <h1 class="cover-heading">Risultato</h1>
+    <p class="lead"><c:out value = "${messaggio}"/></p>
+    
+  </main>
+		<%}else{%>
+		
+		<h1>
+		 <c:out value = "${sessionScope.Utente.getNome()}"/> 
+		 <c:out value = "${sessionScope.Utente.getCognome()}"/>	
+		</h1>
+		<img width="120" height="150" src="data:image/png;base64,<c:out value="${sessionScope.Utente.getImage()}" />" />
+		<%}%>
 </body>
 </html>
