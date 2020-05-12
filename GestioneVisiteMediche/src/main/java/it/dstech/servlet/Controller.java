@@ -39,16 +39,16 @@ public class Controller extends HttpServlet {
 			break;
 		case 4:
 			req.setAttribute("messaggio", "Devi prima accedere");
-			req.getRequestDispatcher("aggiungiDisp.jsp").forward(req, resp);
+			req.getRequestDispatcher("aggiungiDisponibilita.jsp").forward(req, resp);
 			break;
 		case 5:
 			req.setAttribute("messaggio", "Devi prima accedere");
-			req.getRequestDispatcher("rimuoviDisp.jsp").forward(req, resp);
+			req.getRequestDispatcher("annullaDisponibilita.jsp").forward(req, resp);
 			break;
 		case 6:
 			// case per aggiungere appuntamento
 			req.setAttribute("listaDisponibilita", gestioneDB.mostraListaDisponibilita(req.getParameter("data")));
-			req.getRequestDispatcher("agenda.jsp").forward(req, resp);
+			req.getRequestDispatcher("aggiungiAppuntamento.jsp").forward(req, resp);
 			break;
 		case 7:
 			// completato
