@@ -45,6 +45,7 @@ if(utente.getRuolo().equals("paziente") ){
     <td>
     <c:out value = "${app.getPatologia().getNome()}"/>
     </td> 
+    <td>
     <form action="annullaAppuntamento" method="post">
     <input type="number" hidden="true" name="idApp" value=<c:out value = "${app.getIdAppuntamento()}"/> >
        <button type="submit" class="btn btn-danger" >Annulla</button>

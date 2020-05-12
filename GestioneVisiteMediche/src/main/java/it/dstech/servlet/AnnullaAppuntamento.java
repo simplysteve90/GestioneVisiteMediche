@@ -13,7 +13,8 @@ import javax.servlet.http.HttpSession;
 import it.dstech.model.Utente;
 import it.dstech.service.GestioneDatabase;
 
-@WebServlet(name = "annullaAppuntamento", urlPatterns = { "/annullaAppuntamento" })
+@WebServlet(name = "annullaAppuntamento", urlPatterns = { "/medico/annullaAppuntamento",
+		"/paziente/annullaAppuntamento" })
 public class AnnullaAppuntamento extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

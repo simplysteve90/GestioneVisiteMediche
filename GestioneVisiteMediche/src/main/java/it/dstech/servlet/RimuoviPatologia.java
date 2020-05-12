@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import it.dstech.model.Patologia;
 import it.dstech.service.GestioneDatabase;
 
-@WebServlet(name = "aggiungiPatologia", urlPatterns = { "/medico/aggiungiPatologia" })
-public class AggiungiPatologia extends HttpServlet {
+@WebServlet(name = "rimuoviPatologia", urlPatterns = { "/medico/rimuoviPatologia" })
+public class RimuoviPatologia extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,12 +29,12 @@ public class AggiungiPatologia extends HttpServlet {
 		Patologia patologia = new Patologia();
 		patologia.setNome(req.getParameter("nomePatologia"));
 		if (gestioneDB.controlloPatologia(patologia)) {
-			gestioneDB.aggiungiPatologia(patologia);
-			req.setAttribute("messaggio", "Patologia aggiunta");
+			gestioneDB.rimuoviPatologia(patologia);
+			req.setAttribute("messaggio", "Patologia rimossa");
 			req.getRequestDispatcher("menuMedico.jsp").forward(req, resp);
 
 		} else {
-			req.setAttribute("messaggio", "Patologia già presente");
+			req.setAttribute("messaggio", "Patologia non presente");
 			req.getRequestDispatcher("menuMedico.jsp").forward(req, resp);
 		}
 	}

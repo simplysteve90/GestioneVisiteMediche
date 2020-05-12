@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
 			req.getRequestDispatcher("aggiungiPatologia.jsp").forward(req, resp);
 			break;
 		case 3:
-			req.setAttribute("messaggio", "Devi prima accedere");
+			req.setAttribute("listaPatologie", gestioneDB.stampaPatologie());
 			req.getRequestDispatcher("rimuoviPatologia.jsp").forward(req, resp);
 			break;
 		case 4:
@@ -46,7 +46,8 @@ public class Controller extends HttpServlet {
 			req.getRequestDispatcher("annullaDisponibilita.jsp").forward(req, resp);
 			break;
 		case 6:
-			// case per aggiungere appuntamento
+			// completato
+			req.setAttribute("stampaPatologia", gestioneDB.stampaPatologie());
 			req.setAttribute("listaDisponibilita", gestioneDB.mostraListaDisponibilita(req.getParameter("data")));
 			req.getRequestDispatcher("aggiungiAppuntamento.jsp").forward(req, resp);
 			break;

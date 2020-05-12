@@ -70,7 +70,7 @@ public class GestioneDatabase {
 		return p;
 	}
 
-	public List<Patologia> stampaPatologia() {
+	public List<Patologia> stampaPatologie() {
 		List<Patologia> lista = em.createQuery("SELECT p FROM Patologia p ORDER BY p.nome", Patologia.class)
 				.getResultList();
 		return lista;
