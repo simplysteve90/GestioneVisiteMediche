@@ -104,14 +104,14 @@ public class GestioneDatabase {
 
 	public List<Appuntamento> mostraListaAppuntamenti() {
 		Query query = em
-				.createQuery("SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.effettuato = 1?");
+				.createQuery("SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.effettuato = ?1");
 		query.setParameter(1, false);
 		return query.getResultList();
 	}
 
 	public List<Appuntamento> mostraStoricoAppuntamenti() {
 		Query query = em
-				.createQuery("SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.effettuato = 1?");
+				.createQuery("SELECT appuntamento FROM Appuntamento appuntamento WHERE appuntamento.effettuato = ?1");
 		query.setParameter(1, true);
 		return query.getResultList();
 	}
