@@ -25,19 +25,16 @@ public class AggiungiDisponibilita extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		GestioneDatabase gestioneDB = new GestioneDatabase(
 				(EntityManagerFactory) getServletContext().getAttribute("emf"));
-		Disponibilita d = new Disponibilita();
-
-		d.setData(req.getParameter("data"));
 		int lassoDiTempo = Integer.parseInt(req.getParameter("oraFine"))
 				- Integer.parseInt(req.getParameter("oraInizio"));
-		for (int i = 0; i <= lassoDiTempo; i++) {
-			d.setOraInizio(LocalTime.of(Integer.parseInt(req.getParameter("oraInizio")) +i, 0));
-			d.setOraFine(LocalTime.of(Integer.parseInt(req.getParameter("oraInizio"))+ i + 1, 0));
-			if(gestioneDB.controlloDisponibilita(d)) {
+		for (int i = 1; i <= lassoDiTempo; i++) {
+			Disponibilita d = new Disponibilita();
+			d.setData(req.getParameter("data"));
+			d.setOraInizio(LocalTime.of(Integer.parseInt(req.getParameter("oraInizio")) + i, 0));
+			d.setOraFine(LocalTime.of(Integer.parseInt(req.getParameter("oraInizio")) + (i + 1), 0));
+			if (gestioneDB.controlloDisponibilita(d)) {
 				gestioneDB.aggiungiDisponibilita(d);
-				
-
-		}
+			}
 		}
 		req.setAttribute("messaggio", "Hai aggiunto delle disponibilità, controlla nell'agenda per verificare.");
 		req.getRequestDispatcher("menuMedico.jsp").forward(req, resp);

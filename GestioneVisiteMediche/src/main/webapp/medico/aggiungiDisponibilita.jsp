@@ -9,6 +9,8 @@
 </head>
 <body>
 <%@include file="tendinaMedico.jsp"%>
+<%@include file="/agenda.jsp"%>
+
 <br>
 	<form action="aggiungiDisponibilita" method="post" >
 	
@@ -18,7 +20,7 @@
 <h5>Inserisci Ora Fine</h5>
     <input type="number" id="oraFine" name="oraFine" style="width:250px; height:50px;margin:auto" placeholder="Ora Fine"> <br>
 <br>
-<input type="date" hidden="true" name="data" value= <%= request.getAttribute("data") %>>
+<input type="date" hidden="true" name="data" value= <%=request.getAttribute("data") %>>
   <input type="submit" style="width:150px; height:45px;margin:auto" value="Aggiungi">
 
 

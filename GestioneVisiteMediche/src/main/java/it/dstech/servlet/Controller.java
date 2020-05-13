@@ -38,8 +38,6 @@ public class Controller extends HttpServlet {
 			req.getRequestDispatcher("rimuoviPatologia.jsp").forward(req, resp);
 			break;
 		case 4:
-			req.setAttribute("messaggio", "Devi prima accedere");
-			req.setAttribute("listaDisponibilita", gestioneDB.mostraListaDisponibilita(req.getParameter("data")));
 			req.getRequestDispatcher("aggiungiDisponibilita.jsp").forward(req, resp);
 			break;
 		case 5:
