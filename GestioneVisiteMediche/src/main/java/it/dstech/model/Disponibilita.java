@@ -1,5 +1,7 @@
 package it.dstech.model;
 
+import java.time.LocalTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +15,8 @@ public class Disponibilita {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idDisponibilita;
 	private String data;
-	private String oraInizio;
-	private String oraFine;
+	private LocalTime oraInizio;
+	private LocalTime oraFine;
 	@Column(columnDefinition = "boolean default false")
 	private boolean prenotato;
 
@@ -45,26 +47,38 @@ public class Disponibilita {
 		this.data = data;
 	}
 
-	public String getOraInizio() {
+//	public String getOraInizio() {
+//		return oraInizio;
+//	}
+//
+//	public void setOraInizio(String oraInizio) {
+//		this.oraInizio = oraInizio;
+//	}
+//
+//	public String getOraFine() {
+//		return oraFine;
+//	}
+//
+//	public void setOraFine(String oraFine) {
+//		this.oraFine = oraFine;
+	
+
+	
+
+	public LocalTime getOraInizio() {
 		return oraInizio;
 	}
 
-	public void setOraInizio(String oraInizio) {
+	public void setOraInizio(LocalTime oraInizio) {
 		this.oraInizio = oraInizio;
 	}
 
-	public String getOraFine() {
+	public LocalTime getOraFine() {
 		return oraFine;
 	}
 
-	public void setOraFine(String oraFine) {
+	public void setOraFine(LocalTime oraFine) {
 		this.oraFine = oraFine;
-	}
-
-	@Override
-	public String toString() {
-		return "Disponibilita [idDisponibilita=" + idDisponibilita + ", data=" + data + ", oraInizio=" + oraInizio
-				+ ", oraFine=" + oraFine + "]";
 	}
 
 }
