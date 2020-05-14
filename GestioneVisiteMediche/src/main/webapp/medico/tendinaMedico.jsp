@@ -9,18 +9,20 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Sezione Medico</a>
-  
+		<a class="navbar-brand" href="#">Sezione Medico</a>
+
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
-					href="<%=request.getContextPath()%>/medico/menuMedico.jsp">Home <span
-						class="sr-only">(current)</span></a></li>
-						
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=1">Controllo Appuntamenti
-					<span class="sr-only">(current)</span></a></li>
-				
+					href="<%=request.getContextPath()%>/medico/menuMedico.jsp">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+
+				<li class="nav-item"><a class="nav-link" onclick="document.getElementById('id01').style.display='block'"
+					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=1">Controllo
+						Appuntamenti <span class="sr-only">(current)</span>
+				</a></li>
+
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=2">Aggiungi
 						Patologia<span class="sr-only">(current)</span>
@@ -29,12 +31,16 @@
 					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=3">Rimuovi
 						Patologia<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=4">Aggiungi Disponibilità
-					<span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=5">Rimuovi Disponibilità
-					<span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link" onclick="document.getElementById('id01').style.display='block'"
+					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=4">Aggiungi
+						Disponibilità <span class="sr-only">(current)</span>
+				</a></li>
+				
+					
+				<li class="nav-item"><a class="nav-link" onclick="document.getElementById('id01').style.display='block'"
+					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=5">Rimuovi
+						Disponibilità <span class="sr-only">(current)</span>
+				</a></li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0"
 				action="<%=request.getContextPath()%>/login.jsp">
@@ -42,5 +48,18 @@
 			</form>
 		</div>
 	</nav>
+	<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </body>
+
 </html>
