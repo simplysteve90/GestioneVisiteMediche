@@ -9,7 +9,7 @@
 </head>
 <body>
 	
-	<input type="date" id="data" name="data" value=<%=request.getAttribute("data")%>>
-	
+	<input type="date" id="data" name="data" value=<%=request.getAttribute("data")%> onchange="this.form.submit();">
+    	
 </body>
 </html>

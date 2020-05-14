@@ -9,11 +9,11 @@
 </head>
 <body>
 <%@include file="tendinaMedico.jsp"%>
-<%@include file="/agenda.jsp"%>
+
 
 <br>
 	<form action="aggiungiDisponibilita" method="post" >
-	
+
 	<h5>Inserisci Ora Inizio</h5>
     <input type="number" id="oraInizio" name="oraInizio" style="width:250px; height:50px;margin:auto" placeholder="Ora Inizio"> <br>
 <br>
