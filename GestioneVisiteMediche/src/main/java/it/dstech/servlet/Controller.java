@@ -27,22 +27,22 @@ public class Controller extends HttpServlet {
 		switch (azione) {
 		case 1:
 			req.setAttribute("listaDisponibilita", gestioneDB.mostraListaDisponibilita(req.getParameter("data")));
-			req.getRequestDispatcher("annullaDisponibilita.jsp").forward(req, resp);
+			req.getRequestDispatcher("/medico/gestioneAppuntamenti.jsp").forward(req, resp);
 			break;
 		case 2:
 			req.setAttribute("messaggio", "Devi prima accedere");
-			req.getRequestDispatcher("aggiungiPatologia.jsp").forward(req, resp);
+			req.getRequestDispatcher("/medico/aggiungiPatologia.jsp").forward(req, resp);
 			break;
 		case 3:
 			req.setAttribute("listaPatologie", gestioneDB.stampaPatologie());
-			req.getRequestDispatcher("rimuoviPatologia.jsp").forward(req, resp);
+			req.getRequestDispatcher("/medico/rimuoviPatologia.jsp").forward(req, resp);
 			break;
 		case 4:
-			req.getRequestDispatcher("aggiungiDisponibilita.jsp").forward(req, resp);
+			req.getRequestDispatcher("/medico/aggiungiDisponibilita.jsp").forward(req, resp);
 			break;
 		case 5:
 			req.setAttribute("messaggio", "Devi prima accedere");
-			req.getRequestDispatcher("annullaDisponibilita.jsp").forward(req, resp);
+			req.getRequestDispatcher("/medico/annullaDisponibilita.jsp").forward(req, resp);
 			break;
 		case 6:
 			// completato

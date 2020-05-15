@@ -9,38 +9,47 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Sezione Medico</a>
+		<a class="navbar-brand" >Sezione Medico</a>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="<%=request.getContextPath()%>/medico/menuMedico.jsp">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
+				<li class="nav-item active">
+					 <form class="form-inline my-2 my-lg-0" action="<%=request.getContextPath()%>/medico/menuMedico.jsp">
+				<button class="w3-button w3-white w3-padding-large w3-hover-black"
+						style="width: 150px; height: 50px; margin: auto" type="submit"> Home </button> </form> </li>
 
-				<li class="nav-item"><a class="nav-link" onclick="document.getElementById('id01').style.display='block'"
-					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=1">Controllo
-						Appuntamenti <span class="sr-only">(current)</span>
-				</a></li>
+				<li class="nav-item">
+					<button class="w3-button w3-white w3-padding-large w3-hover-black"
+						onclick="document.getElementById('id01').style.display='block'"
+						style="width: 150px; height: 50px; margin: auto" name="azione" value="1">Controllo
+						Appuntamenti</button>
+				</li>
+	
+				<li class="nav-item">
+				 <form class="form-inline my-2 my-lg-0" action="controlloAzione">
+				<button class="w3-button w3-white w3-padding-large w3-hover-black" 
+						style="width: 150px; height: 50px; margin: auto" type="submit" name="azione" value="2" > Aggiungi
+						Patologia</button> </form></li>
 
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=2">Aggiungi
-						Patologia<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=3">Rimuovi
-						Patologia<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" onclick="document.getElementById('id01').style.display='block'"
-					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=4">Aggiungi
-						Disponibilità <span class="sr-only">(current)</span>
-				</a></li>
-				
-					
-				<li class="nav-item"><a class="nav-link" onclick="document.getElementById('id01').style.display='block'"
-					href="<%=request.getContextPath()%>/medico/controlloAzione?azione=5">Rimuovi
-						Disponibilità <span class="sr-only">(current)</span>
-				</a></li>
+				<li class="nav-item"> 
+				<form class="form-inline my-2 my-lg-0" action="controlloAzione">
+				<button	class="w3-button w3-white w3-padding-large w3-hover-black"
+						style="width: 150px; height: 50px; margin: auto" type="submit" name="azione" value="3">Rimuovi
+						Patologia</button> </form> </li>
+
+				<li class="nav-item"><button
+						class="w3-button w3-white w3-padding-large w3-hover-black"
+						
+						style="width: 150px; height: 50px; margin: auto" name="azione" value="4"
+						onclick="document.getElementById('id01').style.display='block'">
+						Aggiungi Disponibilità</button></li>
+
+
+				<li class="nav-item"><button
+						class="w3-button w3-white w3-padding-large w3-hover-black"
+						onclick="document.getElementById('id01').style.display='block'"
+						style="width: 150px; height: 50px; margin: auto" name="azione" value="5">Rimuovi
+						Disponibilità</button></li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0"
 				action="<%=request.getContextPath()%>/login.jsp">
@@ -49,17 +58,33 @@
 		</div>
 	</nav>
 	<script>
-// Get the modal
-var modal = document.getElementById('id01');
+		// Get the modal
+		var modal = document.getElementById('id01');
 
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+	<div id="id01" class="modal">
+		<form class="modal-content animate" action="controlloAzione">
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'"
+					class="close" title="Close Modal">&times;</span>
+			</div>
+			<div class="container1"> 
+			<input type="hidden"  value='<c:out value="azione"></c:out>'>
+				<input type="date" id="data" name="data"
+					value=<%=request.getAttribute("data")%>
+					onchange="this.form.submit();">
+				<button class="btn btn-danger" type="button"
+					onclick="document.getElementById('id01').style.display='none'">Annulla</button>
+			</div>
+		</form>
+	</div>
 </body>
 
 </html>
