@@ -37,10 +37,8 @@
 						style="width: 150px; height: 50px; margin: auto" type="submit" name="azione" value="3">Rimuovi
 						Patologia</button> </form> </li>
 
-				<li class="nav-item"><button
-						class="w3-button w3-white w3-padding-large w3-hover-black"
-						
-						style="width: 150px; height: 50px; margin: auto" name="azione" value="4"
+				<li class="nav-item"><button class="w3-button w3-white w3-padding-large w3-hover-black"
+						style="width: 150px; height: 50px; margin: auto" name="azione" value="4">
 						onclick="document.getElementById('id01').style.display='block'">
 						Aggiungi Disponibilità</button></li>
 
@@ -76,7 +74,7 @@
 					class="close" title="Close Modal">&times;</span>
 			</div>
 			<div class="container1"> 
-			<input type="hidden"  value='<c:out value="azione"></c:out>'>
+		<input type="hidden"  value="opener"> 
 				<input type="date" id="data" name="data"
 					value=<%=request.getAttribute("data")%>
 					onchange="this.form.submit();">
